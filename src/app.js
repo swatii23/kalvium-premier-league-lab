@@ -67,7 +67,7 @@ try {
 // }
 
 //Progression 3 - Filter players that debuted in ___ year
-function filterYear(players, year) {
+function filterByDebut(players, year) {
   return players.filter(player => player.debut == year)
 }
 
@@ -82,7 +82,7 @@ function filterByAward(players, awardName) {
 }
 
 //Progression 6 - Filter players that won ______ award ____ times
-function filterAwardTime(players, awardName, noOfTimes) {
+function filterByAwardxTimes(players, awardName, noOfTimes) {
   const reqPlayers = filterByAward(players, awardName)
   return (reqPlayers.filter(player => 
     player.awards.length == noOfTimes
@@ -90,39 +90,39 @@ function filterAwardTime(players, awardName, noOfTimes) {
 }
 
 //Progression 7 - Filter players that won ______ award and belong to ______ country
-function filterAwardCountry(players, awardName, country) {
+function filterByAwardxCountry(players, awardName, country) {
   const reqPlayers = filterByAward(players, awardName)
   return reqPlayers.filter(player => player.country == country)
 }
 
 
 //Progression 8 - Filter players that won atleast ______ awards, belong to ______ team and are younger than ____
-function filterAwardTeamAge(players, awardName, team, ageReq) {
+function filterByNoOfAwardsxTeamxAge(players, awardName, team, ageReq) {
   const reqPlayers = filterByAward(players, awardName)
   return reqPlayers.filter(player => player.team == team && player.age < ageReq)
 }
 
 
 //Progression 9 - Sort players in descending order of their age
-function sortPlayerAge(players) {
+function SortByAge(players) {
   return players.sort((a, b) => b.age - a.age)
 }
 
 //Progression 10 - Sort players beloging to _____ team in descending order of awards won
-const sortPlayerTeamAward = (players, team) => {
+const FilterByTeamxSortByNoOfAwards = (players, team) => {
   const teamPlayers = players.filter(player => player.team === team);
   return teamPlayers.sort((a, b) => b.awards.length - a.awards.length);
 };
 
 //Challenge 1 - Sort players that have won _______ award _____ times and belong to _______ country in alphabetical order of their names
-const sortPlayerAwardTimesCountry = (players, awardName, times, country) => {
-  const filteredPlayers = filterAwardTime(players, awardName, times).filter(player => player.country === country);
+const SortByNamexAwardxTimes = (players, awardName, times, country) => {
+  const filteredPlayers = filterByAwardxTimes(players, awardName, times).filter(player => player.country === country);
   return filteredPlayers.sort((a, b) => a.name.localeCompare(b.name));
 };
 
 //Challenge 2 - Sort players that are older than _____ years in alphabetical order
 //Sort the awards won by them in reverse chronological order
-const sortOlderPlayersAwards = (players, age) => {
+const SortByNamexOlderThan = (players, age) => {
   const filteredPlayers = players.filter(player => player.age > age);
   return filteredPlayers.sort((a, b) => {
     const latestA = Math.max(...a.awards.map(award => award.year));
