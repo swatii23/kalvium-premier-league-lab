@@ -67,38 +67,38 @@ try {
 // }
 
 //Progression 3 - Filter players that debuted in ___ year
-function filterByDebut(players, year) {
+function filterByDebut(year) {
   return players.filter(player => player.debut == year)
 }
 
 //Progression 4 - Filter players that play at the position _______
-function filterByPosition(players, position) {
+function filterByPosition(position) {
   return players.filter(player => player.position == position)
 }
 
 //Progression 5 - Filter players that have won ______ award
-function filterByAward(players, awardName) {
+function filterByAward(awardName) {
   return players.filter(player => player.awards.some(award => award.name == awardName))
 }
 
 //Progression 6 - Filter players that won ______ award ____ times
-function filterByAwardxTimes(players, awardName, noOfTimes) {
-  const reqPlayers = filterByAward(players, awardName)
+function filterByAwardxTimes(awardName, noOfTimes) {
+  const reqPlayers = filterByAward(awardName)
   return (reqPlayers.filter(player => 
     player.awards.length == noOfTimes
     ))
 }
 
 //Progression 7 - Filter players that won ______ award and belong to ______ country
-function filterByAwardxCountry(players, awardName, country) {
-  const reqPlayers = filterByAward(players, awardName)
+function filterByAwardxCountry(awardName, country) {
+  const reqPlayers = filterByAward(awardName)
   return reqPlayers.filter(player => player.country == country)
 }
 
 
 //Progression 8 - Filter players that won atleast ______ awards, belong to ______ team and are younger than ____
-function filterByNoOfAwardsxTeamxAge(players, awardName, team, ageReq) {
-  const reqPlayers = filterByAward(players, awardName)
+function filterByNoOfAwardsxTeamxAge(awardName, team, ageReq) {
+  const reqPlayers = filterByAward(awardName)
   return reqPlayers.filter(player => player.team == team && player.age < ageReq)
 }
 
@@ -109,20 +109,20 @@ function SortByAge(players) {
 }
 
 //Progression 10 - Sort players beloging to _____ team in descending order of awards won
-const FilterByTeamxSortByNoOfAwards = (players, team) => {
+const FilterByTeamxSortByNoOfAwards = (team) => {
   const teamPlayers = players.filter(player => player.team === team);
   return teamPlayers.sort((a, b) => b.awards.length - a.awards.length);
 };
 
 //Challenge 1 - Sort players that have won _______ award _____ times and belong to _______ country in alphabetical order of their names
-const SortByNamexAwardxTimes = (players, awardName, times, country) => {
-  const filteredPlayers = filterByAwardxTimes(players, awardName, times).filter(player => player.country === country);
+const SortByNamexAwardxTimes = (awardName, times, country) => {
+  const filteredPlayers = filterByAwardxTimes(awardName, times).filter(player => player.country === country);
   return filteredPlayers.sort((a, b) => a.name.localeCompare(b.name));
 };
 
 //Challenge 2 - Sort players that are older than _____ years in alphabetical order
 //Sort the awards won by them in reverse chronological order
-const SortByNamexOlderThan = (players, age) => {
+const SortByNamexOlderThan = (age) => {
   const filteredPlayers = players.filter(player => player.age > age);
   return filteredPlayers.sort((a, b) => {
     const latestA = Math.max(...a.awards.map(award => award.year));
