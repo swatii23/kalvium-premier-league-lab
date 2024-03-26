@@ -5,6 +5,9 @@ let currentTeam = "Manchester FC";
 let trophiesWon = 27;
 
 //Write your function here
+function createManager(name, age, team, trophy) {
+  return [name, age, team, trophy];
+}
 
 // Don't edit the following code
 try {
@@ -22,6 +25,13 @@ try {
 var formation = [4, 4, 3];
 
 //write your function here
+function createFormation(formation) {
+  return {
+    defender: formation[0], 
+    midfield: formation[1], 
+    forward: formation[2]
+  };
+}
 
 // Dont edit the following code
 
@@ -31,15 +41,53 @@ try {
   //do nothing
 }
 
+// {
+//   name: "Luka Modric",
+//   age: 33,
+//   debut: 2006,
+//   team: "Real Madrid",
+//   position: "Midfielder",
+//   country: "Croatian",
+//   url:
+//     "https://media.guim.co.uk/737d9bde5b3cf33b0230c887acfadf9e68c427bd/169_141_3371_2023/500.jpg",
+//   awards: [
+//     {
+//       name: "The Best FIFA Men's Player",
+//       year: 2016
+//     },
+//     {
+//       name: "Ballon",
+//       year: 2018
+//     },
+//     {
+//       name: "The Best FIFA Men's Player",
+//       year: 2018
+//     }
+//   ]
+// }
+
 //Progression 3 - Filter players that debuted in ___ year
+function filterYear(player, year) {
+  return players.filter(player => player.debut)
+}
 
 //Progression 4 - Filter players that play at the position _______
+function filterPosition(params) {
+  
+}
 
 //Progression 5 - Filter players that have won ______ award
+function filterAward(params) {
+  
+}
 
 //Progression 6 - Filter players that won ______ award ____ times
+function filterAwardTime(params) {
+  
+}
 
 //Progression 7 - Filter players that won ______ award and belong to ______ country
+
 
 //Progression 8 - Filter players that won atleast ______ awards, belong to ______ team and are younger than ____
 
